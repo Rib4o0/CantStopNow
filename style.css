@@ -1,0 +1,516 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+
+:root {
+    --main-color: lime;
+}
+
+body {
+    background-color: black;
+    font-family: Sixtyfour;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: var(--main-color);
+    user-select: none;
+}
+
+canvas {
+    border: 2px solid var(--main-color);
+}
+
+.loadingContainer {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 1500px;
+    height: 600px;
+    background-color: black;
+    z-index: 10;
+}
+
+.loadingProgressBar {
+    width: 400px;
+    height: 30px;
+    border: 1px solid var(--main-color);
+    margin-top:10px;
+}
+
+.loadingWayThere {
+    height: 100%;
+    width: 0%;
+    background-color: var(--main-color);
+    transition: all 5s;
+}
+
+.loadingWayThere.loading {
+    width: 100%;
+}
+
+.mainScreenMenu,.pauseScreenMenu {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% ,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 1500px;
+    height: 600px;
+    /* background-color: black; */
+}
+
+.pauseScreenMenu {
+    background-color: rgba(0, 0, 0, 0.7)
+}
+
+.mainScreenMenu.hide, .pauseScreenMenu.hide, .mapScreenMenu.hide {
+    z-index: -1;
+}
+
+.title, .titlePaused, .titleMap {
+    position: absolute;
+    top: 20px;
+    font-size: 70px;
+}
+
+.start, .resume, .settings, .resumePaused, .settingsPaused, .mainMenu, .selectLevel, .selectLevelPaused{
+    background-color: black;
+    border: 2px solid var(--main-color);
+    color: var(--main-color);
+    font-family: Sixtyfour;
+    width: 200px;
+    height: 50px;
+    margin-bottom: 5px;
+    position: relative;
+    left: -49%;
+    top: 180px;
+    transform: translateX(50%);
+}
+
+.credits {
+    width: 300px;
+    text-align: right;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
+
+.unavaible {
+    color: green;
+    border: 2px solid green;
+    pointer-events: none;
+}
+
+.level, .deaths, .JBOT, .fps, .paused {
+    position: absolute;
+    right: 15px;
+}
+
+.level {
+    top: 10px;
+}
+
+.deaths {
+    right: 15px;
+    top: 33px;
+}
+
+.JBOT,.paused {
+    /* top: 10px; */
+    left: 50%;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    opacity: 0;
+}
+
+.JBOT.show {
+    top: 10px;
+    opacity: 1;
+}
+
+.fps {
+    left: 15px;
+    top: 10px;
+}
+
+.paused {
+    font-size: 30px;
+    bottom: 5px;
+}
+
+.paused.show {
+    opacity: 1;
+}
+
+.settingsMenu {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 700px;
+    height: 360px;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border: 2px solid var(--main-color);
+    z-index: -100;
+}
+
+.settingsMenu.show {
+    z-index: 100;
+}
+
+.closeSettings, .closeMap {
+    height: 50px;
+    width: 200px;
+    background-color: black;
+    border: var(--main-color) 2px solid;
+    color: var(--main-color);
+    font-family: Sixtyfour;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.volumeSlider,.sfxSlider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 370px; 
+    height: 15px; 
+    background: black;
+    outline: none;
+    border: 2px solid var(--main-color);
+    position: absolute;
+    left: 15px;
+    top: 100px;
+}
+  
+.volumeSlider::-webkit-slider-thumb, .sfxSlider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 30px; 
+    height: 25px;
+    background: var(--main-color); 
+    cursor: pointer; 
+}
+  
+.volumeSlider::-moz-range-thumb, .sfxSlider::-moz-range-thumb {
+    width: 40px;
+    height: 40px; 
+    background: var(--main-color);
+    cursor: pointer; 
+}
+
+.sfxSlider {
+    top: 170px;
+}
+
+.settingsTitle {
+    font-size: 40px;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+
+.volumeSliderText, .sfxSliderText {
+    position: absolute;
+    left: 15px;
+    top: 70px;
+}
+
+.sfxSliderText {
+    top: 140px;
+}
+
+.volumeSliderNumber, .sfxSliderNumber {
+    position: absolute;
+    top: 105px;
+    left: 410px;
+}
+
+.sfxSliderNumber {
+    top: 175px;
+}
+
+.retroEffectText {
+    position: absolute;
+    left: 15px;
+    top: 210px;
+}
+
+.showFPSText {
+    position: absolute;
+    left: 15px;
+    top: 290px;
+}
+
+.switchRetroEffect, .switchShowFPS {
+  position: absolute;
+  top: 240px;
+  left: 15px;
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+}
+
+.switchShowFPS {
+    top: 310px;
+}
+
+/* Hide default HTML checkbox */
+.switchRetroEffect input, .switchShowFPS input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.sliderRetroEffect, .sliderShowFPS {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  border: 2px solid var(--main-color);
+}
+
+.sliderRetroEffect:before, .sliderShowFPS:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 3px;
+  background-color: var(--main-color);
+  /* transition: transform 250ms; */
+}
+
+input:checked + .sliderRetroEffect, input:checked +  .sliderShowFPS {
+  background-color: var(--main-color);
+}
+
+/* input:focus + .sliderRetroEffect, .sliderShowFPS {
+  box-shadow: 0 0 1px #2196F3;
+} */
+
+input:checked + .sliderRetroEffect:before, input:checked + .sliderShowFPS:before {
+  -webkit-transform: translateX(44px);
+  -ms-transform: translateX(44px);
+  transform: translateX(44px);
+  background-color: black;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 2px;
+}
+
+.startConfirmation {
+    width: 500px;
+    height: 200px;
+    background-color: black;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--main-color);
+    z-index: -1;
+}
+
+.startConfirmation.show {
+    z-index: 100;
+}
+
+.startConfirmationText {
+    line-height: 18px;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+
+.startConfirm, .startCancel {
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    bottom: 15px;
+    background-color: black;
+    border: 2px solid var(--main-color);
+    color: var(--main-color);
+    font-family: Sixtyfour;
+}
+
+.startConfirm {
+    left: 33px;
+}
+
+.startCancel {
+    right: 33px;
+}
+
+.controls {
+    position: absolute;
+    top: 390px;
+}
+
+.jump {
+    top: 370px;
+}
+
+.side {
+    top: 350px;
+}
+
+.mapScreenMenu {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% ,-50%);
+    width: 1500px;
+    height: 600px;
+    background-color: black;
+}
+
+.levelCelContainer {
+    position: absolute;
+    left: 50%;
+    top: calc(50% + 100px);
+    transform: translate(-50% ,-50%);
+    width: 1500px;
+    height: 600px;
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    grid-template-rows: repeat(4, 125px);
+    grid-template-columns: repeat(5, 300px);
+}
+
+.levelCel {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid var(--main-color);
+    position: relative;
+}
+
+.levelCelContainer:nth-child(6) {
+    grid-column-start: 4;
+}
+
+.connector {
+    height: 5px;
+    width: 245px;
+    background-color: var(--main-color);
+    position: absolute;
+    top: 160px;
+    left: 178px;
+    /* height: 5px;
+    width: 200px;
+    background-color: var(--main-color);
+    position: absolute;
+    top: 70px;
+    left: 200px; */
+}
+
+.connector:nth-child(3), .connector:nth-child(9), .connector:nth-child(13), .connector:nth-child(19) {
+    left: 478px;
+}
+.connector:nth-child(4), .connector:nth-child(8), .connector:nth-child(14), .connector:nth-child(18) {
+    left: 778px;
+}
+.connector:nth-child(5), .connector:nth-child(7), .connector:nth-child(15), .connector:nth-child(17) {
+    left: 1078px;
+}
+.connector:nth-child(6), .connector:nth-child(11), .connector:nth-child(16) {
+    width: 5px;
+    height: 70px;
+    left: 1347px;
+    top: 190px;
+}
+.connector:nth-child(7), .connector:nth-child(8), .connector:nth-child(9), .connector:nth-child(10) {
+    top: 285px;
+}
+.connector:nth-child(12), .connector:nth-child(13), .connector:nth-child(14), .connector:nth-child(15) {
+    top: 410px;
+}
+.connector:nth-child(17), .connector:nth-child(18), .connector:nth-child(19), .connector:nth-child(20) {
+    top: 535px;
+}
+.connector:nth-child(11) {
+    left: 147px;
+    top: 315px;
+}
+.connector:nth-child(16) {
+    top: 440px;
+}
+
+.unavailable {
+    color: var(--main-color);
+    border: 5px solid var(--main-color);
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.connector.hide {
+    opacity: 0;
+}
+
+.titleMap {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+}
+
+.difficulty {
+    position: absolute;
+    left: 15px;
+    top: 150px;
+    font-size: 14px;
+}
+
+.Hard {
+    top: 280px;
+}
+
+.Insane {
+    top: 405px;
+}
+
+.Extreme {
+    top: 530px;
+}
+
+.level666 {
+    position: absolute;
+    right: 30px;
+    color: red;
+    top: 270px;
+    opacity: 0;
+}
+
+.level666.show {
+    opacity: 1;
+}
+
+.subtitles {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    text-align: center;
+} 

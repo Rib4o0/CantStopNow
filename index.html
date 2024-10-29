@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can't stop now!</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./game.js"></script>
+    <script src="./libJS.js" defer></script>
+</head>
+<body>
+    <div class="loadingContainer">
+        <div class="loadingText">Loading...</div>
+        <div class="loadingProgressBar">
+            <div class="loadingWayThere"></div>
+        </div>
+    </div>
+    <div class="mainScreenMenu">
+        <div class="title">CAN'T STOP NOW!</div>
+        <button class="start">START</button>
+        <button class="resume">RESUME</button>
+        <button class="selectLevel">SELECT LEVEL</button>
+        <button class="settings">SETTINGS</button>
+        <div class="credits">
+            Designed & programmed by: Rosen Kamenov
+            Verified by: Boyan Manchev
+        </div>
+        <div class="controls side">
+            Use A & D or ← & → to move side to side
+        </div>
+        <div class="controls jump">
+            Use W or SPACE or ↑ to jump
+        </div>
+        <div class="controls rise">
+            Hold W or SPACE or ↑ to levitate upwards
+        </div>
+        <div class="level666">???</div>
+    </div>
+    <div class="pauseScreenMenu hide">
+        <div class="titlePaused">PAUSED</div>
+        <button class="resumePaused">RESUME</button>
+        <button class="mainMenu">MAIN MENU</button>
+        <button class="selectLevelPaused">SELECT LEVEL</button>
+        <button class="settingsPaused">SETTINGS</button>
+    </div>
+    <div class="stats">
+        <p class="level"></p>
+        <p class="deaths"></p>
+        <p class="JBOT">JBOT ACTIVE</p>
+        <p class="fps"></p>
+        <!-- <p class="paused">PAUSED</p> -->
+    </div>
+    <div class="settingsMenu">
+        <div class="settingsTitle">Settings</div>
+        <button class="closeSettings">CLOSE</button>
+        <div class="volumeSliderText">Volume Slider</div>
+        <input type="range" name="volumeSlider" min="0" max="100" value="100" class="volumeSlider">
+        <div class="volumeSliderNumber">69</div>
+        <div class="sfxSliderText">SFX Slider</div>
+        <input type="range" name="sfxSlider" min="0" max="100" value="100" class="sfxSlider">
+        <div class="sfxSliderNumber">69</div>
+        <div class="retroEffectText">Retro Effect</div>
+        <label class="switchRetroEffect">
+            <input type="checkbox" checked="true" class="retroEffect">
+            <span class="sliderRetroEffect"></span>
+        </label>
+        <div class="showFPSText">Show FPS</div>
+        <label class="switchShowFPS">
+            <input type="checkbox" checked="true" class="showFPS">
+            <span class="sliderShowFPS"></span>
+        </label>
+    </div>
+    <div class="startConfirmation">
+        <div class="startConfirmationText">You already have a save. Clicking YES means that the save will be erased. Are you sure you want to reset?</div>
+        <button class="startConfirm">YES</button>
+        <button class="startCancel">NO</button>
+    </div>
+    <div class="mapScreenMenu hide">
+        <div class="titleMap">LEVELS</div>
+        <div class="levelCelContainer">
+            <div class="levelCel levelCel1" data-level="1">1</div>
+            <div class="levelCel levelCel2  unavailable" data-level="2">2</div>
+            <div class="levelCel levelCel3 unavailable" data-level="3">3</div>
+            <div class="levelCel levelCel4 unavailable" data-level="4">4</div>
+            <div class="levelCel levelCel5 unavailable" data-level="5">5</div>
+            <div class="levelCel levelCel10 unavailable" data-level="10">10</div>
+            <div class="levelCel levelCel9 unavailable" data-level="9">9</div>
+            <div class="levelCel levelCel8 unavailable" data-level="8">8</div>
+            <div class="levelCel levelCel7 unavailable" data-level="7">7</div>
+            <div class="levelCel levelCel6 unavailable" data-level="6">6</div>
+            <div class="levelCel levelCel11 unavailable" data-level="11">11</div>
+            <div class="levelCel levelCel12 unavailable" data-level="12">12</div>
+            <div class="levelCel levelCel13 unavailable" data-level="13">13</div>
+            <div class="levelCel levelCel14 unavailable" data-level="14">14</div>
+            <div class="levelCel levelCel15 unavailable" data-level="15">15</div>
+            <div class="levelCel levelCel20 unavailable" data-level="20">20</div>
+            <div class="levelCel levelCel19 unavailable" data-level="19">19</div>
+            <div class="levelCel levelCel18 unavailable" data-level="18">18</div>
+            <div class="levelCel levelCel17 unavailable" data-level="17">17</div>
+            <div class="levelCel levelCel16 unavailable" data-level="16">16</div>
+        </div>
+        <div class="connectorContainer">
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+            <div class="connector hide"></div>
+        </div>
+        <button class="closeMap">CLOSE</button>
+        <div class="difficulty Easy">Easy</div>
+        <div class="difficulty Hard">Hard</div>
+        <div class="difficulty Insane">Insane</div>
+        <div class="difficulty Extreme">Extreme</div>
+    </div>
+    <div class="subtitles"></div>
+</body>
+</html>
+
+<!-- TODO:
+    SECRET: LEVEL 666;(THE GAME TURNS RED) - unlocks extra levels
+    EXTRA LEVELS: THE 5 LEVELS OF HELL
+    DIFFERENT COLORS: LIME - DEFAULT, PURPLE - BEAT LEVEL 20, RED - BEAT LEVEL 666, RAINBOW - BEAT THE 5 LEVELS OF HELL
+-->
